@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace XpBar\Events;
 
 class ExampleEvent extends Event
 {

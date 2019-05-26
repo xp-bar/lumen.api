@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace XpBar\Providers;
 
-use App\User;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use XpBar\User;
 
 class AuthServiceProvider extends ServiceProvider
 {

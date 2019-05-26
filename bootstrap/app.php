@@ -2,9 +2,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-(new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-    dirname(__DIR__)
-))->bootstrap();
+try {
+    Dotenv\Dotenv::create(__DIR__)->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    //
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,17 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+// Enable Laravel Facades
+$app->withFacades();
 
-// $app->withEloquent();
+// Enable Eloquent ORM
+$app->withEloquent();
+
+// Load database Config
+$app->configure('database');
+
+// Load CORS config
+$app->configure('cors');
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +48,12 @@ $app = new Laravel\Lumen\Application(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    XpBar\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    XpBar\Console\Kernel::class
 );
 
 /*
@@ -57,12 +67,12 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    \Barryvdh\Cors\HandleCors::class,
+]);
 
 // $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
+//     'auth' => XpBar\Http\Middleware\Authenticate::class,
 // ]);
 
 /*
@@ -76,9 +86,10 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Barryvdh\Cors\ServiceProvider::class);
+// $app->register(XpBar\Providers\AppServiceProvider::class);
+// $app->register(XpBar\Providers\AuthServiceProvider::class);
+// $app->register(XpBar\Providers\EventServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +103,7 @@ $app->singleton(
 */
 
 $app->router->group([
-    'namespace' => 'App\Http\Controllers',
+    'namespace' => 'XpBar\Http\Controllers',
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });

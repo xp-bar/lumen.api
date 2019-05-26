@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Listeners;
+namespace XpBar\Listeners;
 
-use App\Events\ExampleEvent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use XpBar\Events\ExampleEvent;
 
 class ExampleListener
 {

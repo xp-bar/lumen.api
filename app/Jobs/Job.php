@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Jobs;
+namespace XpBar\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 abstract class Job implements ShouldQueue
 {

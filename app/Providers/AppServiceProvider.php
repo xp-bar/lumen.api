@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace XpBar\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

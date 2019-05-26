@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace XpBar\Jobs;
 
 class ExampleJob extends Job
 {
