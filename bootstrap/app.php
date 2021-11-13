@@ -6,6 +6,8 @@ require_once __DIR__.'/../vendor/autoload.php';
     dirname(__DIR__)
 ))->bootstrap();
 
+date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -66,7 +68,7 @@ $app->singleton(
 */
 
 $app->middleware([
-    \Barryvdh\Cors\HandleCors::class,
+    \Fruitcake\Cors\HandleCors::class,
 ]);
 
 // $app->routeMiddleware([
@@ -84,7 +86,7 @@ $app->middleware([
 |
 */
 
-$app->register(Barryvdh\Cors\ServiceProvider::class);
+$app->register(\Fruitcake\Cors\CorsServiceProvider::class);
 // $app->register(XpBar\Providers\AppServiceProvider::class);
 // $app->register(XpBar\Providers\AuthServiceProvider::class);
 // $app->register(XpBar\Providers\EventServiceProvider::class);
