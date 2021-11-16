@@ -87,9 +87,11 @@ $app->middleware([
 */
 
 $app->register(\Fruitcake\Cors\CorsServiceProvider::class);
+// $app->register(XpBar\Providers\RouteBindingServiceProvider::class);
 // $app->register(XpBar\Providers\AppServiceProvider::class);
 // $app->register(XpBar\Providers\AuthServiceProvider::class);
 // $app->register(XpBar\Providers\EventServiceProvider::class);
+// $app->register(XpBar\Providers\MorphMapServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
